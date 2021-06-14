@@ -1,0 +1,50 @@
+<%- include('partials/_header') %>
+
+    <div class="container">
+      <div class="row">
+        <!-- Form -->
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-body">
+              <form action="/api/products" method="POST">
+                <h2>Product</h2>
+                <div class="form-group">
+                  <input type="text" name="title" placeholder="Insert a Title" class="form-control">
+                </div>
+                <h2>Description</h2>
+                <div class="form-group">
+                  <textarea name="description" cols="80" class="form-control" placeholder="Insert a Descriptiion"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- List -->
+        <div class="col-md-7">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Nº</th>
+                <th>Product</th>
+                <th>Operation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (var i = 0; i < products.length; i++) {%>
+                <tr>
+                  <td><%= i+1 %></td>
+                  <td><%= products[i].title %></td>
+                  <td>
+                    <a href="/delete_form/<%=products[i]._id %>" class="btn btn-danger">Delete</a>
+                    <a href="/api/products/<%=products[i]._id %>" class="btn btn-info">Show</a>
+                  </td>
+                </tr>
+              <%}%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<%- include('partials/_footer') %>

@@ -1,0 +1,52 @@
+<%- include('partials/_header') %>
+
+    <div class="container">
+      <div class="row">
+        <!-- Form -->
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-body">
+              <form action="/api/categories" method="POST">
+                <h2>Category</h2>
+                <div class="form-group">
+                  <input type="text" name="title" placeholder="Insert a Title" class="form-control">
+                </div>
+                <h2>Description</h2>
+                <div class="form-group">
+                  <textarea name="description" cols="80" class="form-control" placeholder="Insert a Descriptiion"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+                <a href="/api/product/" class="btn btn-primary">All Products</a>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- List -->
+        <div class="col-md-7">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Nº</th>
+                <th>Category</th>
+                <th>Operation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (var i = 0; i < categories.length; i++) {%>
+                <tr>
+                  <td><%= i+1 %></td>
+                  <td><%= categories[i].title %></td>
+                  <td>
+                    <a href="/api/product/<%=categories[i]._id %>" class="btn btn-primary">Products</a>
+                    <a href="/delete_form_category/<%=categories[i]._id %>" class="btn btn-danger">Delete</a>
+                    <a href="/api/categories/<%=categories[i]._id %>" class="btn btn-info">Details</a>
+                  </td>
+                </tr>
+              <%}%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<%- include('partials/_footer') %>

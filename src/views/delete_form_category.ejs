@@ -1,0 +1,28 @@
+<%- include('partials/_header') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h1  align="center">Confirm Delete</h1>
+          <form action="/api/categories/<%=category._id%>?_method=DELETE" method="POST">
+            <h2>Categories</h2>
+            <div class="form-group">
+              <input type="text" name="title" placeholder="Insert a Title" class="form-control" value="<%=category.title%>">
+            </div>
+            <h2>Description</h2>
+            <div class="form-group">
+              <textarea name="description" cols="80" class="form-control" placeholder="Insert a Descriptiion" ><%=category.description%></textarea>
+            </div>
+            <button type="submit" class="btn btn btn-danger">Yes</button>
+            <a href="/" class="btn btn-primary">No</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%- include('partials/_footer') %>
